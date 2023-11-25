@@ -2,7 +2,7 @@
 function map(mode, lhs, rhs, opts)
   local options = { noremap = true }
   if opts then
-      options = vim.tbl_extend("force", options, opts)
+    options = vim.tbl_extend("force", options, opts)
   end
   -- vim.api.nvim_set_keymap(mode, lhs, rhs, options)
   vim.keymap.set(mode, lhs, rhs, options)
@@ -11,9 +11,9 @@ end
 -- map('n','<Right>','<Nop>')                                   -- disable right click ( I think )
 
 -- reload config
-map("n", "<leader>r", ":source ~/AppData/Local/nvim/init.lua<CR>")	-- reload neovim config
+map("n", "<leader>r", ":source ~/AppData/Local/nvim/init.lua<CR>") -- reload neovim config
 
--- Tab bindings 
+-- Tab bindings
 -- map("n", "<leader>t", ":tabnew<CR>")			                    -- space+t creates new tab
 -- map("n", "<leader>x", ":tabclose<CR>")		                    -- space+x closes current tab
 -- map("n", "<leader>j", ":tabprevious<CR>")	                    -- space+j moves to previous tab
@@ -39,7 +39,7 @@ map("n", "<leader>r", ":source ~/AppData/Local/nvim/init.lua<CR>")	-- reload neo
 -- map("n", "<C-Right>", ":vertical resize -3<CR>")	            -- Control+Right resizes vertical split -
 
 -- -- Open netrw in 25% split in tree view
--- map("n", "<leader>e", ":25Lex<CR>")			                      -- space+e toggles netrw tree view 
+-- map("n", "<leader>e", ":25Lex<CR>")			                      -- space+e toggles netrw tree view
 
 -- -- Automatically create if, case, and function templates
 -- map("n", "<leader>i", "iif [ @ ]; then <CR><CR> else <CR><CR> fi <ESC>/@ <CR>")
@@ -65,7 +65,7 @@ map("n", "<leader>r", ":source ~/AppData/Local/nvim/init.lua<CR>")	-- reload neo
 -- map("i", ",f", "@() {<CR><CR> } ")
 
 -- -- Visual Maps
--- map("v", "<leader>r", "\"hy:%s/<C-r>h//g<left><left>")			   -- Replace all instances of highlighted words 
+-- map("v", "<leader>r", "\"hy:%s/<C-r>h//g<left><left>")			   -- Replace all instances of highlighted words
 -- map("v", "<C-s>", ":sort<CR>")									               -- Sort highlighted text in visual mode with Control+S
 -- map("v", "J", ":m '>+1<CR>gv=gv")								               -- Move current line down
--- map("v", "K", ":m '>-2<CR>gv=gv")								               -- Move current line up 
+-- map("v", "K", ":m '>-2<CR>gv=gv")								               -- Move current line up
