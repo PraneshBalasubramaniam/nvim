@@ -1,10 +1,9 @@
-require('initial')
-require('settings')
+require 'initial'
+require 'keymap'
+require 'config_lazy'
+require 'options'
 
--- vim.cmd('colorscheme gruvbox')                       -- set colorscheme
--- vim.cmd('filetype plugin on')                        -- set filetype
--- vim.cmd('set wildmenu')                              -- enable wildmenu
+require 'configs.init'
 
--- require('statusline')
-require('keymap')
--- require('automate')
+-- require 'statusline'
+-- require 'automate'
