@@ -7,7 +7,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 
-require 'configs.setTelescope'
-require 'configs.setTreesitter'
+require 'configs.telescope'
+require 'configs.treesitter'
 require 'configs.config_lsp'
 require 'configs.nvim_cmp'

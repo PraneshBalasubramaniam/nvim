@@ -11,85 +11,103 @@
 -- vim.cmd('filetype plugin on')                        -- set filetype
 -- vim.cmd('set wildmenu')                              -- enable wildmenu
 
+local opt = vim.opt
+
+-- show number before normal line column
+opt.nu = true
 
 --vim.cmd("let g:netrw_list_hide=netrw_gitignore#Hide()")
-vim.opt.title = true   -- show title
+opt.title = true       -- show title
 vim.cmd 'set path+=**' -- search current directory recursively
-vim.opt.syntax = "ON"
-vim.opt.backup = false
-vim.opt.compatible = false -- turn off vi compatibility mode
-vim.opt.number = true      -- turn on line numbers ( global )
--- vim.opt.relativenumber = true -- turn on relative line numbers
+opt.syntax = "ON"
+opt.backup = false
+opt.compatible = false -- turn off vi compatibility mode
+opt.number = true      -- turn on line numbers ( global )
+-- opt.relativenumber = true -- turn on relative line numbers
 -- vim.o.mouse = 'a'				   -- enable the mouse in all modes
--- vim.opt.mouse = 'a'				 -- enable the mouse in all modes
-vim.opt.mousemodel = 'extend' -- change right click to visual mode rather than to show popup
--- vim.opt.ignorecase = true      -- enable case insensitive searching
--- vim.opt.smartcase = true       -- all searches are case insensitive unless there's a capital letter
--- vim.opt.hlsearch = false       -- disable all highlighted search results
-vim.opt.incsearch = true       -- enable incremental searching
-vim.opt.wrap = true            -- enable text wrapping
-vim.opt.tabstop = 4            -- tabs=4spaces
-vim.opt.shiftwidth = 4
-vim.opt.fileencoding = "utf-8" -- encoding set to utf-8
-vim.opt.pumheight = 10         -- number of items in popup menu
--- vim.opt.showtabline = 2        -- always show the tab line
-vim.opt.laststatus = 1         -- always show statusline
-vim.opt.signcolumn = "auto"
-vim.opt.expandtab = false      -- expand tab
-vim.opt.smartindent = true
-vim.opt.showcmd = true
-vim.opt.cmdheight = 1
-vim.opt.showmode = true
-vim.opt.scrolloff = 10     -- scroll page when cursor is 8 lines from top/bottom
-vim.opt.sidescrolloff = 10 -- scroll page when cursor is 8 spaces from left/right
-vim.opt.guifont = "monospace:h17"
--- vim.opt.completeopt = { "menuone", "noselect" }
-vim.opt.splitbelow = true    -- split go below
-vim.opt.splitright = true    -- vertical split to the right
-vim.opt.termguicolors = true -- terminal gui colors
+-- opt.mouse = 'a'				 -- enable the mouse in all modes
+opt.mousemodel = 'extend' -- change right click to visual mode rather than to show popup
+opt.wrap = true           -- enable text wrapping
+opt.tabstop = 4           -- tabs=4spaces
+opt.shiftwidth = 4
+opt.softtabstop = 4
+opt.fileencoding = "utf-8" -- encoding set to utf-8
+opt.pumheight = 12         -- number of items in popup menu
 
+-- directory for swap files ( 👇 is a relative path starts in project folder )
+-- opt.directory = 'swapfiles/'
+
+-- opt.showtabline = 2        -- always show the tab line
+-- opt.laststatus = 1 -- always show statusline
+
+opt.signcolumn = "auto"
+opt.expandtab = false -- expand tab
+opt.smartindent = true
+opt.showmode = true
+opt.scrolloff = 10     -- scroll page when cursor is 8 lines from top/bottom
+opt.sidescrolloff = 10 -- scroll page when cursor is 8 spaces from left/right
+opt.guifont = "monospace:h17"
+-- opt.completeopt = { "menuone", "noselect" }
+opt.splitbelow = true    -- split go below
+opt.splitright = true    -- vertical split to the right
+opt.termguicolors = true -- terminal gui colors
+-- opt.synmaxcol = 300      -- stop syntax highlighting for performance
+
+-- Sidebar
+-- opt.numberwidth = 3
+opt.showcmd = true
+opt.cmdheight = 1
 
 -- from lazyvim config
 
--- Set highlight on search
-vim.o.hlsearch = true
+local o = vim.o
+-- highlight all search terms instead of one
+o.hlsearch = true
 
 -- Make line numbers default
 -- vim.wo.number = true ( fine-grained )
-vim.o.relativenumber = true
+o.relativenumber = true
 
 -- Disable mouse mode
--- vim.o.mouse = ''
+-- o.mouse = ''
 
 -- Enable break indent
-vim.o.breakindent = true
+o.breakindent = true
 
--- Save undo history
-vim.o.undofile = true
+-- Save previously changed undo history
+-- o.undodir = ''
+-- o.undofile = true
 
--- Case insensitive searching UNLESS /C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
+-- Search
+o.ignorecase = true -- enable case insensitive searching
+o.smartcase = true  -- all searches are case insensitive unless there's a capital letter
+o.incsearch = true  -- enable incremental searching - starts searching as soon as typing without enter
 
 -- Decrease update time
-vim.o.updatetime = 250
+o.updatetime = 50 -- update time for backgroup process
 vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 --vim.cmd [[colorscheme onedark]]
 -- vim.cmd.colorscheme "catppuccin"
 
---vim.cmd()
-vim.opt.clipboard = 'unnamedplus'
+opt.clipboard = 'unnamedplus'
+
+o.colorcolumn = '100'
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+o.completeopt = 'menuone,noselect'
 
 -- Concealer for Neorg
-vim.o.conceallevel = 2
+o.conceallevel = 2
 
 
 -- from stackoverflow
 
--- vim.o.modifiable = true -- ( 'set modifiable' -> vimscript ) ( check if works when error appears )
-vim.cmd('set modifiable')
+-- o.modifiable = true -- ( 'set modifiable' -> vimscript ) ( check if works when error appears )
+-- vim.cmd('set modifiable')
+
+
+--[[ My options ]]
+
+o.timeoutlen = 0 -- using now for which-key appear delay

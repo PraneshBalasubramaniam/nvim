@@ -21,7 +21,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- setup to install and manage plugins ( not configure plugins )
 
-require 'lazy'.setup({
+require 'lazy'.setup {
 
   -- 'folke/lazy.nvim',
 
@@ -114,13 +114,23 @@ require 'lazy'.setup({
   -- theme -> colorscheme
   -- { "catppuccin/nvim",      name = "catppuccin" },   -- try using 'name' instead of 'as' to rename
 
+  -- {
+  --   -- Theme inspired by Atom
+  --   'catppuccin/nvim',
+  --   priority = 1000,
+  --   name = 'catppuccin',
+  --   config = function()
+  --     vim.cmd.colorscheme 'catppuccin'
+  --   end,
+  -- },
+
   {
     -- Theme inspired by Atom
-    'catppuccin/nvim',
+    'morhetz/gruvbox',
     priority = 1000,
-    name = 'catppuccin',
+    name = 'gruvbox',
     config = function()
-      vim.cmd.colorscheme 'catppuccin'
+      vim.cmd.colorscheme 'gruvbox'
     end,
   },
 
@@ -140,7 +150,7 @@ require 'lazy'.setup({
     opts = {
       options = {
         icons_enabled = true,
-        theme = 'catppuccin',
+        theme = 'gruvbox',
         component_separators = '|',
         section_separators = '',
       },
@@ -189,6 +199,15 @@ require 'lazy'.setup({
     build = ':TSUpdate',
   },
 
+  {
+    "nvim-tree/nvim-tree.lua",
+    commit = "16f2806d5968157fd6f76542c9ac358c684a3a03",
+    requires = {
+      "nvim-tree/nvim-web-devicons", -- optional, for file icons
+    },
+  },
+
+
   -- kickstart plugins
   require 'kickstart.plugins.autoformat',
   -- require 'kickstart.plugins.debug',
@@ -197,4 +216,4 @@ require 'lazy'.setup({
   -- for custom plugns
   -- { import = 'custom.plugins' },
 
-})
+}

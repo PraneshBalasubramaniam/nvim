@@ -1,7 +1,7 @@
-require 'initial'
+require 'initialSetting'
 require 'keymap'
-require 'config_lazy'
 require 'options'
+require 'config_lazy'
 
 require 'configs.init'
 
