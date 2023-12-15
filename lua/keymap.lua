@@ -82,6 +82,21 @@ map("i", "/*", "/**/<left><left>")
 -- Named register ( "a )
 -- Blackhole register ( "_ ) - not saved ( premanent deletion )
 
+
+-- from lazyvim config
+
+-- [[ Basic Keymaps ]]
+
+-- Keymaps for better default experience
+-- See `:help vim.keymap.set()`
+mapn({ 'n', 'v' }, '<Space>', '<Nop>')
+
+-- Remap for dealing with word wrap
+mapn('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true })
+mapn('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true })
+
+
+
 -- My config
 mapn("n", "<leader>q", ":q<CR>")                                                      -- quit editor
 mapn("n", "<leader>i", ":q!<CR>")                                                     -- quit editor without change
@@ -115,17 +130,5 @@ mapn("v", "J", ":m '>+1<CR>gv=gv") -- move line below ( v )
 mapn("n", "d", '"_d') -- disabling system clipboard for deletion ( d )
 mapn("n", "x", '"_x') -- disabling system clipboard for cut ( x )
 
-
-
-
--- from lazyvim config
-
--- [[ Basic Keymaps ]]
-
--- Keymaps for better default experience
--- See `:help vim.keymap.set()`
-mapn({ 'n', 'v' }, '<Space>', '<Nop>')
-
--- Remap for dealing with word wrap
-mapn('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true })
-mapn('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true })
+-- open terminal
+mapn('n', '<leader>t', ':ToggleTerm<CR>')

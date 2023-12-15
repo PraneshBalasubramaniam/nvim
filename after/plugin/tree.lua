@@ -8,9 +8,9 @@ vim.opt.termguicolors = true
 local HEIGHT_RATIO = 1   -- You can change this
 local WIDTH_RATIO = 0.25 -- You can change this too
 
-local api = require("nvim-tree.api");
+-- local api = require("nvim-tree.api");
 
-require("nvim-tree").setup({
+require("nvim-tree").setup {
   sort_by = "case_sensitive",
   view = {
     side = "right",
@@ -51,4 +51,4 @@ require("nvim-tree").setup({
   filters = {
     dotfiles = false,
   },
-})
+}

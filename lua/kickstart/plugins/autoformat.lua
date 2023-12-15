@@ -8,7 +8,7 @@ return {
   config = function()
     -- Switch for controlling whether you want autoformatting.
     --  Use :KickstartFormatToggle to toggle autoformatting on or off
-    local format_is_enabled = true
+    -- local format_is_enabled = true
     -- ( I don't need to toggle file save as I want as default )
     -- vim.api.nvim_create_user_command('KickstartFormatToggle', function()
     --   format_is_enabled = not format_is_enabled
