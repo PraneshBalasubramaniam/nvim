@@ -15,17 +15,6 @@ return {
     --   print('Setting autoformatting to: ' .. tostring(format_is_enabled))
     -- end, {})
 
-    -- Activate formatting
-    vim.api.nvim_create_user_command('ActivateFormating', function()
-      vim.lsp.buf.format {
-        async = false,
-        filter = function(c)
-          return c.id == vim.api.nvim_get_current_buf()
-        end,
-      }
-      print('file formatted')
-    end, {})
-
     -- Create an augroup that is used for managing our formatting autocmds.
     --      We need one augroup per client to make sure that multiple clients
     --      can attach to the same buffer without interfering with each other.
@@ -63,24 +52,26 @@ return {
         --   return
         -- end
 
+        local formatFunc = function()
+          vim.lsp.buf.format {
+            async = false,
+            filter = function(c) return c.id == client.id end,
+          }
+        end
+
+        -- Activate formatting
+        vim.api.nvim_create_user_command('ActivateFormating', formatFunc, {})
+
         -- Create an autocmd that will run *before* we save the buffer.
         --  Run the formatting command for the LSP that has just attached.
         vim.api.nvim_create_autocmd('BufWritePre', {
           group = get_augroup(client),
           buffer = bufnr,
-          callback = function()
-            -- ( since format_is_enabled is true by default )
-            -- if not format_is_enabled then
-            --   return
-            -- end
-
-            vim.lsp.buf.format {
-              async = false,
-              filter = function(c)
-                return c.id == client.id
-              end,
-            }
-          end,
+          -- ( since format_is_enabled is true by default )
+          -- if not format_is_enabled then
+          --   return
+          -- end
+          callback = formatFunc,
         })
       end,
     })
