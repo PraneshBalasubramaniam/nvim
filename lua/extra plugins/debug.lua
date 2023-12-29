@@ -42,15 +42,19 @@ return {
       },
     }
 
+    local function set(left, right, desc)
+      vim.keymap.set('n', left, right, { desc = 'Debug: ' .. desc })
+    end
+
     -- Basic debugging keymaps, feel free to change to your liking!
-    vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
-    vim.keymap.set('n', '<F1>', dap.step_into, { desc = 'Debug: Step Into' })
-    vim.keymap.set('n', '<F2>', dap.step_over, { desc = 'Debug: Step Over' })
-    vim.keymap.set('n', '<F3>', dap.step_out, { desc = 'Debug: Step Out' })
-    vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
-    vim.keymap.set('n', '<leader>B', function()
+    set('<F5>', dap.continue, 'Start/Continue')
+    set('<F1>', dap.step_into, 'Step Into')
+    set('<F2>', dap.step_over, 'Step Over')
+    set('<F3>', dap.step_out, 'Step Out')
+    set('<leader>b', dap.toggle_breakpoint, 'Toggle Breakpoint')
+    set('<leader>B', function()
       dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
-    end, { desc = 'Debug: Set Breakpoint' })
+    end, 'Set Breakpoint')
 
     -- Dap UI setup
     -- For more information, see |:help nvim-dap-ui|
@@ -75,7 +79,7 @@ return {
     }
 
     -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
-    vim.keymap.set('n', '<F7>', dapui.toggle, { desc = 'Debug: See last session result.' })
+    set('<F7>', dapui.toggle, 'See last session result.')
 
     dap.listeners.after.event_initialized['dapui_config'] = dapui.open
     dap.listeners.before.event_terminated['dapui_config'] = dapui.close
