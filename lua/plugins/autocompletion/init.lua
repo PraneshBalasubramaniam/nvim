@@ -1,6 +1,7 @@
 -- Autocompletion
 return {
   'hrsh7th/nvim-cmp',
+  event = 'BufReadPre',
   dependencies = {
     -- Snippet Engine & its associated nvim-cmp source
     'L3MON4D3/LuaSnip',
@@ -12,4 +13,5 @@ return {
     -- Adds a number of user-friendly snippets
     -- 'rafamadriz/friendly-snippets',
   },
+  config = function() require('plugins.autocompletion.config') end
 }

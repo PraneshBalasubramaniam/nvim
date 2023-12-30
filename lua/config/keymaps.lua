@@ -1,18 +1,18 @@
 -- Functional wrapper for mapping custom keybindings
 local function map(mode, lhs, rhs, opts)
-  local options = { noremap = true }
-  if opts then
-    options = vim.tbl_extend("force", options, opts)
-  end
-  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+	local options = { noremap = true }
+	if opts then
+		options = vim.tbl_extend("force", options, opts)
+	end
+	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
 end
 
 local function mapn(mode, lhs, rhs, opts)
-  local options = { silent = true }
-  if opts then
-    options = vim.tbl_extend("force", options, opts)
-  end
-  vim.keymap.set(mode, lhs, rhs, options)
+	local options = { silent = true }
+	if opts then
+		options = vim.tbl_extend("force", options, opts)
+	end
+	vim.keymap.set(mode, lhs, rhs, options)
 end
 
 -- map('n','<Right>','<Nop>')                                     -- disable right click ( I think )
@@ -46,8 +46,8 @@ end
 -- map("n", "<C-Right>", ":vertical resize -3<CR>")	              -- Control+Right resizes vertical split -
 
 -- Open netrw in 20% split in tree view
--- mapn("n", "<leader>e", ":20Lex<CR>") -- space + e toggles netrw tree view
-mapn("n", "<leader>e", vim.cmd.NvimTreeToggle, { desc = 'Tree toggle ( new plugin )' })
+mapn("n", "<leader>e", ":20Lex<CR>", { desc = 'Tree toggle' }) -- space + e toggles netrw tree view
+-- mapn("n", "<leader>e", vim.cmd.NvimTreeToggle, { desc = 'Tree toggle ( new plugin )' })
 
 
 -- Automatically create if, case, and function templates
@@ -58,9 +58,9 @@ mapn("n", "<leader>e", vim.cmd.NvimTreeToggle, { desc = 'Tree toggle ( new plugi
 -- Automatically close brackets, parethesis, and quotes
 map("i", "'", "''<left>")
 map("i", '"', "\"\"<left>")
-map("i", "(", "(  )<left><left>")
-map("i", "[", "[  ]<left><left>")
-map("i", "{", "{  }<left><left>")
+map("i", "(", "()<left>")
+map("i", "[", "[]<left>")
+map("i", "{", "{}<left>")
 map("i", "<", "<><left>")
 map("i", "`", "``<left>")
 map("i", "/*", "/**/<left><left>")
@@ -98,8 +98,13 @@ mapn('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true })
 
 
 -- My config
-mapn("n", "<leader>q", ":q<CR>")                                                      -- quit editor
-mapn("n", "<leader>i", ":q!<CR>")                                                     -- quit editor without change
+mapn("n", "<leader>q", ":q<CR>", { desc = 'Quit' })                 -- quit editor
+mapn("n", "<leader>i", ":q!<CR>", { desc = 'Quit without saving' }) -- quit editor without change
+-- mapn("n", "<leader>i", function()
+-- 	-- local str = vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf())
+-- 	-- print(str)
+-- 	require('utils.print&log').logToFile(vim.bo.filetype)
+-- end)                                                                                  -- quit editor without change
 mapn("n", "<leader>l", "<cmd>Lazy<CR>")                                               -- open lazy UI
 mapn("n", "<leader>rd", "<C-r>", { desc = 'Redo' })                                   -- remap Ctrl + R ( redo )
 mapn("n", "<leader>kl", ":Telescope keymaps<CR>", { desc = 'Telescope keymap list' }) -- Telescope keymap listing

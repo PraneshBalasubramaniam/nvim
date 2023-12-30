@@ -1,16 +1,11 @@
--- theme -> colorscheme
-
--- { "catppuccin/nvim",      name = "catppuccin" },   -- try using 'name' instead of 'as' to rename
-
--- {
---   -- Theme inspired by Atom
---   'catppuccin/nvim',
---   priority = 1000,
---   name = 'catppuccin',
---   config = function()
---     vim.cmd.colorscheme 'catppuccin'
---   end,
--- },
+return {
+  'catppuccin/nvim',
+  priority = 1000,
+  name = 'catppuccin', -- try using 'name' instead of 'as' to rename
+  config = function()
+    vim.cmd.colorscheme 'catppuccin'
+  end,
+}
 
 -- {
 --   -- Theme inspired by Atom
@@ -21,12 +16,11 @@
 --   end,
 -- }
 
-return {
-  -- Theme inspired by Atom
-  'morhetz/gruvbox',
-  priority = 1000,
-  name = 'gruvbox',
-  config = function()
-    vim.cmd.colorscheme 'gruvbox'
-  end,
-}
+-- return {
+--   'morhetz/gruvbox',
+--   priority = 1000,
+--   name = 'gruvbox',
+--   config = function()
+--     vim.cmd.colorscheme 'gruvbox'
+--   end,
+-- }
