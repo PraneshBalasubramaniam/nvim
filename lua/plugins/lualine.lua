@@ -13,7 +13,13 @@ local opts = {
     lualine_a = {
       { 'branch', 'diff', 'diagnostics' },
     },
-    lualine_b = { 'filename' },
+    lualine_b = {
+      {
+        'filename',
+        file_status = true, -- display file status
+        path = 1
+      }
+    },
     lualine_c = {},
     lualine_x = {},
     -- lualine_z = {

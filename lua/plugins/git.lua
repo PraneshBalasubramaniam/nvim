@@ -17,8 +17,8 @@ local function on_attach(bufnr)
   setv('[c', gs.prev_hunk, 'Jump to previous hunk')
 end
 
+-- See `:help gitsigns.txt`
 local opts = {
-  -- See `:help gitsigns.txt`
   signs = {
     add = { text = '+' },
     change = { text = '~' },

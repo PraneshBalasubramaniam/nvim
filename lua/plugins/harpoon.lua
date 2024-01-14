@@ -5,12 +5,13 @@ local config = function()
   local ui = require("harpoon.ui")
 
   local function set(left, right, desc)
-    vim.keymap.set("n", '<leader>h' .. left, right, { desc = desc })
+    vim.keymap.set("n", left, right, { desc = desc })
   end
 
-  set("a", mark.add_file, 'add')              -- add to harpoon
-  set("s", ui.toggle_quick_menu, 'show list') -- show harpoon list
-  set("j", ui.nav_next, 'next file')          -- navigate to next file
+  set("<leader>ha", mark.add_file, 'add')              -- add to harpoon
+  set("<leader>hs", ui.toggle_quick_menu, 'show list') -- show harpoon list
+  set("<leader>hd", ui.nav_next, 'next file')          -- navigate to next file
+  set("<M-w>", ui.nav_next, 'next file')               -- navigate to next file
 end
 
 return {
